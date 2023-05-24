@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Простое веб-приложение</title>
+  <title>Тетрис</title>
+  <style>
+    #tetris {
+      width: 200px;
+      height: 400px;
+      border: 1px solid #000;
+    }
+    .cell {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      background-color: #FFF;
+    }
+  </style>
 </head>
 <body>
-  <h1>Привет, это простое веб-приложение!</h1>
-  <p>Добро пожаловать в мое веб-приложение.</p>
+  <div id="tetris"></div>
+
+  <script>
+    // JavaScript код для игры Тетрис
+
+    // Создание игрового поля
+    const tetris = document.getElementById('tetris');
+    for (let row = 0; row < 20; row++) {
+      for (let col = 0; col < 10; col++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        tetris.appendChild(cell);
+      }
+    }
+
+    // TODO: Добавьте логику для управления игрой
+
+  </script>
 </body>
 </html>
