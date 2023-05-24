@@ -7,12 +7,14 @@
       width: 200px;
       height: 400px;
       border: 1px solid #000;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
     }
     .cell {
       width: 20px;
       height: 20px;
       border: 1px solid #000;
-      background-color: #FFF;
     }
   </style>
 </head>
@@ -22,15 +24,38 @@
   <script>
     // JavaScript код для игры Тетрис
 
-    // Создание игрового поля
     const tetris = document.getElementById('tetris');
+    const cells = [];
+
+    // Создание игрового поля
     for (let row = 0; row < 20; row++) {
       for (let col = 0; col < 10; col++) {
         const cell = document.createElement('div');
         cell.className = 'cell';
         tetris.appendChild(cell);
+        cells.push(cell);
       }
     }
+
+    // Функция для отрисовки тетромино на игровом поле
+    function drawTetromino(tetromino, position) {
+      tetromino.forEach((row, rowIndex) => {
+        row.forEach((col, colIndex) => {
+          if (col) {
+            const cell = cells[(position.y + rowIndex) * 10 + position.x + colIndex];
+            cell.style.backgroundColor = 'red'; // Замените на нужный цвет тетромино
+          }
+        });
+      });
+    }
+
+    // Пример отрисовки тетромино
+    const tetromino = [
+      [1, 1],
+      [1, 1],
+    ];
+    const position = { x: 3, y: 0 };
+    drawTetromino(tetromino, position);
 
     // TODO: Добавьте логику для управления игрой
 
