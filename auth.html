@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Аутентификация пользователя</title>
+</head>
+<body>
+  <h1>Вход</h1>
+
+  <form id="loginForm" name="loginForm">
+    <input type="email" id="email" name="email" placeholder="Email" required>
+    <input type="password" id="password" name="password" placeholder="Пароль" required>
+    <button type="submit">Войти</button>
+  </form>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Отмена отправки формы
+
+      // Получение значений полей формы
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Проверка аутентификации
+      if (email === 'user@example.com' && password === 'password') {
+        // Аутентификация успешна
+        // Сохранение информации о входе
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('currentUser', email);
+
+        // Выполните необходимые действия, например, перенаправление пользователя
+        window.location.href = '/secured-page.html';
+      } else {
+        // Аутентификация неуспешна
+        alert('Неверные учетные данные. Попробуйте еще раз.');
+      }
+    });
+  </script>
+</body>
+</html>
